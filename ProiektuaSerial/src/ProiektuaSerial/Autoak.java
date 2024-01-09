@@ -1,6 +1,6 @@
 /*
- * 2023(e)ko aza. 29(a)
- * 
+ * 2024(e)ko urt. 9(a)
+ * Ioritz Lopetegi
  */
 package ProiektuaSerial;
 
@@ -14,6 +14,11 @@ import java.util.List;
  * The Class Autoak.
  */
 public class Autoak implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3622428913390848562L;
 
 	/**  Modeloa. */
 	public String Modeloa;
