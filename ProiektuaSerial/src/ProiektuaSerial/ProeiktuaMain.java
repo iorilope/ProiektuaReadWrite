@@ -135,11 +135,7 @@ public class ProeiktuaMain {
 					System.out.println(auto.toString());
 				}
 				
-//				autoa.autoberria();
-//				System.out.println("Autoa gehitu da");
-//				for (Autoak auto : Autozerrenda) {
-//					System.out.println(auto);
-//				}
+
 
 				sc.close();
 			}
