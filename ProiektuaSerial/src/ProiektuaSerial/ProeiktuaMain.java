@@ -4,17 +4,14 @@
 package ProiektuaSerial;
 
 import java.util.Scanner;
-
-
-
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-
 /**
  * The Class ProeiktuaMain.
  *
@@ -27,17 +24,16 @@ public class ProeiktuaMain {
 	 *
 	 * @param args the arguments
 	 */
-	
 	public static void main(String[] args) throws IOException {
 
 		Scanner sc = new Scanner(System.in);
 
 		ArrayList<Autoak> Autozerrenda = new ArrayList<Autoak>();
 		
-		String direktorioaString="C:\\Users\\1ag3.iorilope\\git\\repository11\\ProiektuaSerial\\";
-		String fitxategiaString="autoak.dat";
+		String direktorioaString="C:\\Users\\1ag3.iorilope\\git\\ProiektuaReadWrite\\ProiektuaSerial\\";
 		
-		File fitxategia=new File(direktorioaString+fitxategiaString); 
+		
+		 
 
 		//Auto batzuk sortu
 		Autozerrenda.add(new Autoak("Mercedes", "Benz", 5, "Gasolina", 4, 10.5));
@@ -120,6 +116,13 @@ public class ProeiktuaMain {
 				autoa.SetKontsumoa(kontsumoaa);
 
 				Autozerrenda.add(autoa);
+				
+				System.out.println("Sartu non gorde nai duzun, gogoratu .dat fitxategia izan behar duela");
+				String aukeratufitxategiaString = sc.next();
+				
+				
+				String fitxategiaString = aukeratufitxategiaString;
+				File fitxategia=new File(direktorioaString+fitxategiaString);
 				
 				try (final FileOutputStream fout = new FileOutputStream(fitxategia);
 						final ObjectOutputStream out = new ObjectOutputStream(fout)) {
@@ -208,10 +211,49 @@ public class ProeiktuaMain {
 
 			int cantidadTotalCoches = Autoak.AutoakZenbatu(Autozerrenda);
 			System.out.println("Auto kopurua: " + cantidadTotalCoches);
-
 		}
 		
-		
+		else if (aukera == 5) {
+			
+			
+			System.out.println("Datuak berreskuratu aukeratu duzu");
+			System.out.println("Aukeratu zein fitxategi berreskuratu nahi duzun");
+			 Scanner sarrera = new Scanner(System.in);
+			
+			  String fitxategiizena = sarrera.nextLine();
+			File fitxategiadat = new File(fitxategiizena);
+			
+			if (!fitxategiadat.exists()) {
+	            System.out.println("Fitxategia : " + fitxategiizena + " Ez da existitzen.");
+	            return;
+	        }
+			
+			if (!fitxategiadat.getName().endsWith(".dat")) {
+	            System.out.println("Fitxategia : " + fitxategiizena + " ez da .dat fitxategia");
+	            return;
+	        }
+			try {
+	            
+	            FileInputStream fileInputStream = new FileInputStream(fitxategiizena);
+	            
+	           
+	            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+	            
+	        
+	            Object objetoRecuperado = objectInputStream.readObject();
+	            
+	      
+	            objectInputStream.close();
+	            fileInputStream.close();
+	            
+	           
+	            System.out.println("Datos recuperados: " + objetoRecuperado);
+
+	        } catch (IOException | ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+			
+		}
 		else {
 			System.out.println("Autatutako zenbakiak ez du balio");
 		}
