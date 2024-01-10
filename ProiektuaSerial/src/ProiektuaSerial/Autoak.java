@@ -4,9 +4,7 @@
  */
 package ProiektuaSerial;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
