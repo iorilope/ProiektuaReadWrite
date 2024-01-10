@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 // TODO: Auto-generated Javadoc
 /**
@@ -33,6 +34,7 @@ public class ProeiktuaMain {
 		ArrayList<Autoak> Autozerrenda = new ArrayList<Autoak>();
 
 		String direktorioaString="C:\\Users\\1ag3.iorilope\\git\\ProiektuaReadWrite\\ProiektuaSerial\\";
+		File direktorioaFile = new File(direktorioaString);
 
 		//Auto batzuk sortu
 		Autozerrenda.add(new Autoak("Mercedes", "Benz", 5, "Gasolina", 4, 10.5));
@@ -206,10 +208,21 @@ public class ProeiktuaMain {
 		else if (aukera == 5) {
 			System.out.println("Datuak berreskuratu aukeratu duzu");
 			System.out.println("Aukeratu zein fitxategi berreskuratu nahi duzun");
+			 File[] fitxategiaFiles = direktorioaFile.listFiles();
+			 File[] archivosDat = Arrays.stream(fitxategiaFiles)
+		                .filter(archivo -> archivo.isFile() && archivo.getName().endsWith(".dat"))
+		                .toArray(File[]::new);
+
+		       
+		        for (File archivo : archivosDat) {
+		            System.out.println(archivo.getName());
+		        }
 			Scanner sarrera = new Scanner(System.in);
 
 			String fitxategiizena = sarrera.nextLine();
 			File fitxategiadat = new File(fitxategiizena);
+			
+			
 
 			if (!fitxategiadat.exists()) {
 				System.out.println("Fitxategia : " + fitxategiizena + " Ez da existitzen.");
@@ -231,7 +244,7 @@ public class ProeiktuaMain {
 				objectInputStream.close();
 				fileInputStream.close();
 
-				System.out.println("Datos recuperados: " + objetoRecuperado);
+				System.out.println("Datuak berreskuratu dira: " + objetoRecuperado);
 
 			} catch (IOException | ClassNotFoundException e) {
 				e.printStackTrace();
