@@ -14,7 +14,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class ProeiktuaMain.
  *
@@ -122,7 +122,9 @@ public class ProeiktuaMain {
 
 				String fitxategiaString = aukeratufitxategiaString;
 				File fitxategia=new File(direktorioaString+fitxategiaString);
-
+				if (fitxategiaString.endsWith(".dat")) {
+					
+				
 				try (final FileOutputStream fout = new FileOutputStream(fitxategia);
 						final ObjectOutputStream out = new ObjectOutputStream(fout)) {
 					out.writeObject(Autozerrenda);
@@ -135,6 +137,11 @@ public class ProeiktuaMain {
 					System.out.println(auto.toString());
 				}
 				sc.close();
+			} else {
+
+				System.out.println("Fitxategiak .dat izan behar du");
+			}
+			
 			}
 		}
 
