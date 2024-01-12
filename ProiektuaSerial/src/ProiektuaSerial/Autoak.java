@@ -5,6 +5,8 @@
 package ProiektuaSerial;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +85,8 @@ public class Autoak implements Serializable {
 		kontsumoa=consumption;
 		autoberria();
 	}
+	
+	
 
 	/**
 	 * To string.

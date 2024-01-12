@@ -30,10 +30,11 @@ public class ProeiktuaMain {
 	public static void main(String[] args) throws IOException {
 
 		Scanner sc = new Scanner(System.in);
+		 String erabiltzaileizenaString = System.getenv("USERNAME");
 
 		ArrayList<Autoak> Autozerrenda = new ArrayList<Autoak>();
 
-		String direktorioaString="C:\\Users\\1ag3.iorilope\\git\\ProiektuaReadWrite\\ProiektuaSerial\\";
+		String direktorioaString="C:\\Users\\"+erabiltzaileizenaString+"\\git\\ProiektuaReadWrite\\ProiektuaSerial\\";
 		File direktorioaFile = new File(direktorioaString);
 
 		//Auto batzuk sortu
